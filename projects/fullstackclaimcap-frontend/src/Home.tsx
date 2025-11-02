@@ -1,66 +1,72 @@
-
-import { useWallet } from '@txnlab/use-wallet-react'
-import React, { useState } from 'react'
-import ConnectWallet from './components/ConnectWallet'
-import Transact from './components/Transact'
-import AppCalls from './components/AppCalls'
+import { useWallet } from "@txnlab/use-wallet-react";
+import React, { useState } from "react";
+import ConnectWallet from "./components/ConnectWallet";
+import Transact from "./components/Transact";
+import AppCalls from "./components/AppCalls";
+import ClaimCapApp from "./components/ClaimCapApp";
 
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
-  const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
-  const [openDemoModal, setOpenDemoModal] = useState<boolean>(false)
-  const [appCallsDemoModal, setAppCallsDemoModal] = useState<boolean>(false)
-  const { activeAddress } = useWallet()
+  const [openWalletModal, setOpenWalletModal] = useState<boolean>(false);
+  const [openDemoModal, setOpenDemoModal] = useState<boolean>(false);
+  const [appCallsDemoModal, setAppCallsDemoModal] = useState<boolean>(false);
+  const { activeAddress } = useWallet();
 
   const toggleWalletModal = () => {
-    setOpenWalletModal(!openWalletModal)
-  }
+    setOpenWalletModal(!openWalletModal);
+  };
 
   const toggleDemoModal = () => {
-    setOpenDemoModal(!openDemoModal)
-  }
+    setOpenDemoModal(!openDemoModal);
+  };
 
   const toggleAppCallsModal = () => {
-    setAppCallsDemoModal(!appCallsDemoModal)
-  }
+    setAppCallsDemoModal(!appCallsDemoModal);
+  };
 
   return (
-    <div className="hero min-h-screen bg-teal-400">
-      <div className="hero-content text-center rounded-lg p-6 max-w-md bg-white mx-auto">
-        <div className="max-w-md">
-          <h1 className="text-4xl">
-            Welcome to <div className="font-bold">AlgoKit 🙂</div>
+    <div className="min-vh-100 d-flex align-items-center bg-teal-400 bg-gradient" style={{ backgroundColor: "#20c997" }}>
+      <div className="container text-center">
+        <div className="mx-auto bg-white shadow-lg rounded-4 p-5" style={{ maxWidth: "480px" }}>
+          <h1 className="display-5 fw-bold mb-3">
+            Welcome to <span className="text-primary">AlgoKit 🙂</span>
           </h1>
-          <p className="py-6">
-            This starter has been generated using official AlgoKit React template. Refer to the resource below for next steps.
+          <p className="text-muted mb-4">
+            This starter has been generated using the official AlgoKit React template. Refer to the resource below for next steps.
           </p>
 
-          <div className="grid">
+          <div className="d-grid gap-3">
             <a
               data-test-id="getting-started"
-              className="btn btn-primary m-2"
+              className="btn btn-primary"
               target="_blank"
+              rel="noreferrer"
               href="https://github.com/algorandfoundation/algokit-cli"
             >
-              Getting started
+              Getting Started
             </a>
 
-            <div className="divider" />
-            <button data-test-id="connect-wallet" className="btn m-2" onClick={toggleWalletModal}>
-              Wallet Connection
+            <hr className="my-2" />
+
+            <button data-test-id="connect-wallet" className="btn btn-outline-primary" onClick={toggleWalletModal}>
+              Connect Wallet
             </button>
 
             {activeAddress && (
-              <button data-test-id="transactions-demo" className="btn m-2" onClick={toggleDemoModal}>
-                Transactions Demo
-              </button>
-            )}
+              <>
+                <button data-test-id="transactions-demo" className="btn btn-outline-success" onClick={toggleDemoModal}>
+                  Transactions Demo
+                </button>
 
-            {activeAddress && (
-              <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleAppCallsModal}>
-                Contract Interactions Demo
-              </button>
+                <button data-test-id="appcalls-demo" className="btn btn-outline-info" onClick={toggleAppCallsModal}>
+                  Contract Interactions Demo
+                </button>
+
+                <div className="mt-4">
+                  <ClaimCapApp appId={748997121} />
+                </div>
+              </>
             )}
           </div>
 
@@ -70,7 +76,7 @@ const Home: React.FC<HomeProps> = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
