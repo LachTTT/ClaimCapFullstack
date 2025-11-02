@@ -7,16 +7,17 @@ logger = logging.getLogger(__name__)
 
 # define deployment behaviour based on supplied app spec
 def deploy() -> None:
-    from smart_contracts.artifacts.fullstackclaimcap.fullstackclaimcap_client import (
-        HelloArgs,
-        FullstackclaimcapFactory,
+    # pass
+    from smart_contracts.artifacts.fullstackclaimcap.claim_cap_client import (
+        
+        ClaimCapFactory,
     )
 
     algorand = algokit_utils.AlgorandClient.from_environment()
     deployer_ = algorand.account.from_environment("DEPLOYER")
 
     factory = algorand.client.get_typed_app_factory(
-        FullstackclaimcapFactory, default_sender=deployer_.address
+        ClaimCapFactory, default_sender=deployer_.address
     )
 
     app_client, result = factory.deploy(
@@ -36,9 +37,5 @@ def deploy() -> None:
             )
         )
 
-    name = "world"
-    response = app_client.send.hello(args=HelloArgs(name=name))
-    logger.info(
-        f"Called hello on {app_client.app_name} ({app_client.app_id}) "
-        f"with name={name}, received: {response.abi_return}"
-    )
+    
+    

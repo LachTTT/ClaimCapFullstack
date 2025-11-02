@@ -1,0 +1,340 @@
+#pragma version 11
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 0 1
+    bytecblock "claim_count" 0x151f7c75 "owners" "MAX_CLAIMS" "PRICE" "HOLD_PERIOD"
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // smart_contracts/fullstackclaimcap/contract.py:8
+    // self.claim_count = UInt64(0)    # counter
+    bytec_0 // "claim_count"
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/fullstackclaimcap/contract.py:10
+    // self.MAX_CLAIMS = UInt64(100)
+    bytec_3 // "MAX_CLAIMS"
+    pushint 100 // 100
+    app_global_put
+    // smart_contracts/fullstackclaimcap/contract.py:11
+    // self.PRICE = UInt64(100000)
+    bytec 4 // "PRICE"
+    pushint 100000 // 100000
+    app_global_put
+    // smart_contracts/fullstackclaimcap/contract.py:12
+    // self.HOLD_PERIOD = UInt64(30 * 24 * 60 * 60)
+    bytec 5 // "HOLD_PERIOD"
+    pushint 2592000 // 2592000
+    app_global_put
+
+main_after_if_else@2:
+    // smart_contracts/fullstackclaimcap/contract.py:5
+    // class ClaimCap(ARC4Contract):
+    txn NumAppArgs
+    bz main___algopy_default_create@14
+    txn OnCompletion
+    !
+    assert // OnCompletion must be NoOp
+    txn ApplicationID
+    assert
+    pushbytess 0xb20fa876 0xbc7e1a49 0xbdad8ae4 0x5032e28d 0x02bece11 // method "buy_nft(uint64)string", method "sell_nft(address)string", method "check_hold_days()uint64", method "get_claim_count()uint64", method "hello(string)string"
+    txna ApplicationArgs 0
+    match buy_nft sell_nft check_hold_days get_claim_count hello
+    err
+
+main___algopy_default_create@14:
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    assert // OnCompletion must be NoOp && can only call when creating
+    intc_1 // 1
+    return
+
+
+// smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft[routing]() -> void:
+buy_nft:
+    intc_0 // 0
+    // smart_contracts/fullstackclaimcap/contract.py:14
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    pushint 8 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/fullstackclaimcap/contract.py:16
+    // sender = Txn.sender
+    txn Sender
+    swap
+    // smart_contracts/fullstackclaimcap/contract.py:18
+    // if amount < self.PRICE:
+    intc_0 // 0
+    bytec 4 // "PRICE"
+    app_global_get_ex
+    assert // check self.PRICE exists
+    <
+    bz buy_nft_after_if_else@3
+    // smart_contracts/fullstackclaimcap/contract.py:19
+    // return String(" Need to pay 0.1 ALGO to buy NFT!")
+    pushbytes " Need to pay 0.1 ALGO to buy NFT!"
+
+buy_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft@8:
+    // smart_contracts/fullstackclaimcap/contract.py:14
+    // @abimethod()
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+buy_nft_after_if_else@3:
+    // smart_contracts/fullstackclaimcap/contract.py:21
+    // if self.owners[sender] != UInt64(0):
+    bytec_2 // "owners"
+    dig 1
+    concat
+    dup
+    bury 3
+    box_get
+    assert // check self.owners entry exists
+    btoi
+    bz buy_nft_after_if_else@5
+    // smart_contracts/fullstackclaimcap/contract.py:22
+    // return String(" You already own an NFT!")
+    pushbytes " You already own an NFT!"
+    // smart_contracts/fullstackclaimcap/contract.py:14
+    // @abimethod()
+    b buy_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft@8
+
+buy_nft_after_if_else@5:
+    // smart_contracts/fullstackclaimcap/contract.py:24
+    // count = self.claim_count
+    intc_0 // 0
+    bytec_0 // "claim_count"
+    app_global_get_ex
+    assert // check self.claim_count exists
+    // smart_contracts/fullstackclaimcap/contract.py:25
+    // if count >= self.MAX_CLAIMS:
+    intc_0 // 0
+    bytec_3 // "MAX_CLAIMS"
+    app_global_get_ex
+    assert // check self.MAX_CLAIMS exists
+    >=
+    bz buy_nft_after_if_else@7
+    // smart_contracts/fullstackclaimcap/contract.py:26
+    // return String(" All NFTs sold!")
+    pushbytes " All NFTs sold!"
+    // smart_contracts/fullstackclaimcap/contract.py:14
+    // @abimethod()
+    b buy_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft@8
+
+buy_nft_after_if_else@7:
+    // smart_contracts/fullstackclaimcap/contract.py:28
+    // self.owners[sender] = Global.latest_timestamp
+    global LatestTimestamp
+    itob
+    dig 2
+    swap
+    box_put
+    // smart_contracts/fullstackclaimcap/contract.py:29
+    // self.claim_count += 1
+    intc_0 // 0
+    bytec_0 // "claim_count"
+    app_global_get_ex
+    assert // check self.claim_count exists
+    intc_1 // 1
+    +
+    bytec_0 // "claim_count"
+    swap
+    app_global_put
+    // smart_contracts/fullstackclaimcap/contract.py:32
+    // return String(" NFT purchased! You must hold it for 30 days.")
+    pushbytes " NFT purchased! You must hold it for 30 days."
+    // smart_contracts/fullstackclaimcap/contract.py:14
+    // @abimethod()
+    b buy_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft@8
+
+
+// smart_contracts.fullstackclaimcap.contract.ClaimCap.sell_nft[routing]() -> void:
+sell_nft:
+    pushbytes ""
+    // smart_contracts/fullstackclaimcap/contract.py:34
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    pushint 32 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/fullstackclaimcap/contract.py:38
+    // purchase_time = self.owners[sender]
+    bytec_2 // "owners"
+    // smart_contracts/fullstackclaimcap/contract.py:36
+    // sender = Txn.sender
+    txn Sender
+    // smart_contracts/fullstackclaimcap/contract.py:38
+    // purchase_time = self.owners[sender]
+    concat
+    dup
+    box_get
+    assert // check self.owners entry exists
+    btoi
+    dup
+    // smart_contracts/fullstackclaimcap/contract.py:40
+    // if purchase_time == UInt64(0):
+    bnz sell_nft_after_if_else@3
+    // smart_contracts/fullstackclaimcap/contract.py:41
+    // return String(" You don't own an NFT.")
+    pushbytes " You don't own an NFT."
+
+sell_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.sell_nft@6:
+    // smart_contracts/fullstackclaimcap/contract.py:34
+    // @abimethod()
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+sell_nft_after_if_else@3:
+    // smart_contracts/fullstackclaimcap/contract.py:43
+    // now = Global.latest_timestamp
+    global LatestTimestamp
+    dup
+    bury 5
+    // smart_contracts/fullstackclaimcap/contract.py:44
+    // if now - purchase_time < self.HOLD_PERIOD:
+    dig 1
+    -
+    intc_0 // 0
+    bytec 5 // "HOLD_PERIOD"
+    app_global_get_ex
+    assert // check self.HOLD_PERIOD exists
+    <
+    bz sell_nft_after_if_else@5
+    // smart_contracts/fullstackclaimcap/contract.py:45
+    // return String(" Hold period (30 days) not finished yet!")
+    pushbytes " Hold period (30 days) not finished yet!"
+    // smart_contracts/fullstackclaimcap/contract.py:34
+    // @abimethod()
+    b sell_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.sell_nft@6
+
+sell_nft_after_if_else@5:
+    // smart_contracts/fullstackclaimcap/contract.py:47
+    // self.owners[buyer_bytes] = now
+    bytec_2 // "owners"
+    dig 3
+    concat
+    dig 4
+    itob
+    box_put
+    // smart_contracts/fullstackclaimcap/contract.py:48
+    // self.owners[sender] = UInt64(0)
+    intc_0 // 0
+    itob
+    dig 2
+    swap
+    box_put
+    // smart_contracts/fullstackclaimcap/contract.py:49
+    // return String("NFT sold successfully!")
+    pushbytes "NFT sold successfully!"
+    // smart_contracts/fullstackclaimcap/contract.py:34
+    // @abimethod()
+    b sell_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.sell_nft@6
+
+
+// smart_contracts.fullstackclaimcap.contract.ClaimCap.check_hold_days[routing]() -> void:
+check_hold_days:
+    // smart_contracts/fullstackclaimcap/contract.py:54
+    // purchase_time = self.owners[sender]
+    bytec_2 // "owners"
+    // smart_contracts/fullstackclaimcap/contract.py:53
+    // sender = Txn.sender
+    txn Sender
+    // smart_contracts/fullstackclaimcap/contract.py:54
+    // purchase_time = self.owners[sender]
+    concat
+    box_get
+    assert // check self.owners entry exists
+    btoi
+    dup
+    // smart_contracts/fullstackclaimcap/contract.py:55
+    // if purchase_time == UInt64(0):
+    bnz check_hold_days_after_if_else@3
+    // smart_contracts/fullstackclaimcap/contract.py:56
+    // return UInt64(0)
+    intc_0 // 0
+
+check_hold_days_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.check_hold_days@4:
+    // smart_contracts/fullstackclaimcap/contract.py:51
+    // @abimethod()
+    itob
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+check_hold_days_after_if_else@3:
+    dup
+    // smart_contracts/fullstackclaimcap/contract.py:51
+    // @abimethod()
+    b check_hold_days_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.check_hold_days@4
+
+
+// smart_contracts.fullstackclaimcap.contract.ClaimCap.get_claim_count[routing]() -> void:
+get_claim_count:
+    // smart_contracts/fullstackclaimcap/contract.py:61
+    // return self.claim_count
+    intc_0 // 0
+    bytec_0 // "claim_count"
+    app_global_get_ex
+    assert // check self.claim_count exists
+    // smart_contracts/fullstackclaimcap/contract.py:59
+    // @abimethod()
+    itob
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts.fullstackclaimcap.contract.ClaimCap.hello[routing]() -> void:
+hello:
+    // smart_contracts/fullstackclaimcap/contract.py:63
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    pushint 2 // 2
+    +
+    swap
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    pushbytes 0x151f7c75002948656c6c6f207b6e616d657d212057656c636f6d6520746f20436c61696d436170204d61726b657420
+    log
+    intc_1 // 1
+    return

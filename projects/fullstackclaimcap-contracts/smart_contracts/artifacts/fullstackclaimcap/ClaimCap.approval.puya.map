@@ -1,0 +1,2154 @@
+{
+  "version": 3,
+  "sources": [
+    "../../fullstackclaimcap/contract.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAOQ;AAAmB;AAAnB;AAEA;AAAkB;;AAAlB;AACA;;AAAa;;;;AAAb;AACA;;AAAmB;;;;;AAAnB;AAPR;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;;;AAAA;;;;;;;;;;;;AASK;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAEY;;AAAA;AAEG;AAAA;;AAAA;AAAA;AAAT;AAAX;;;AACmB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AALd;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAOM;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAX;;;AACmB;;;;;;;;;;;;;;;;;;;;;;;;;;AARd;;;AAUW;AAAA;AAAA;AAAA;AACI;AAAA;AAAA;AAAA;AAAT;AAAX;;;AACmB;;;;;;;;;;;;;;;;;AAZd;;;AAcyB;;AAAtB;AAAA;;AAAA;AAAA;AACA;AAAA;AAAA;AAAA;AAAoB;AAApB;AAAA;AAAA;AAAA;AAGO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAlBV;;;;;AAoBA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAImB;AAFP;;AAEO;AAAA;AAAA;AAAA;AAAA;AAAA;AAExB;;;AACmB;;;;;;;;;;;;;;;;;;;;;;;;AAPd;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AASS;;AAAA;AAAA;;AACH;;AAAA;AAAsB;AAAA;;AAAA;AAAA;AAAtB;AAAX;;;AACmB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAXd;;;AAaG;AAAA;;AAAA;AAAA;;AAAA;AAAA;AACsB;AAAtB;AAAA;;AAAA;AAAA;AACO;;;;;;;;;;;;;;;;;;;;;;;;AAfV;;;AAoBmB;AADP;;AACO;AAAA;AAAA;AAAA;AAAA;AACxB;;;AACmB;AALd;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;;;AAUU;AAAA;AAAA;AAAA;AAFV;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAIA;;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "algopy.arc4.ARC4Contract.approval_program",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 0 1"
+    },
+    "5": {
+      "op": "bytecblock \"claim_count\" 0x151f7c75 \"owners\" \"MAX_CLAIMS\" \"PRICE\" \"HOLD_PERIOD\""
+    },
+    "60": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "62": {
+      "op": "bnz main_after_if_else@2",
+      "stack_out": []
+    },
+    "65": {
+      "op": "bytec_0 // \"claim_count\"",
+      "defined_out": [
+        "\"claim_count\""
+      ],
+      "stack_out": [
+        "\"claim_count\""
+      ]
+    },
+    "66": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "\"claim_count\"",
+        "0"
+      ],
+      "stack_out": [
+        "\"claim_count\"",
+        "0"
+      ]
+    },
+    "67": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "68": {
+      "op": "bytec_3 // \"MAX_CLAIMS\"",
+      "defined_out": [
+        "\"MAX_CLAIMS\""
+      ],
+      "stack_out": [
+        "\"MAX_CLAIMS\""
+      ]
+    },
+    "69": {
+      "op": "pushint 100 // 100",
+      "defined_out": [
+        "\"MAX_CLAIMS\"",
+        "100"
+      ],
+      "stack_out": [
+        "\"MAX_CLAIMS\"",
+        "100"
+      ]
+    },
+    "71": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "72": {
+      "op": "bytec 4 // \"PRICE\"",
+      "defined_out": [
+        "\"PRICE\""
+      ],
+      "stack_out": [
+        "\"PRICE\""
+      ]
+    },
+    "74": {
+      "op": "pushint 100000 // 100000",
+      "defined_out": [
+        "\"PRICE\"",
+        "100000"
+      ],
+      "stack_out": [
+        "\"PRICE\"",
+        "100000"
+      ]
+    },
+    "78": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "79": {
+      "op": "bytec 5 // \"HOLD_PERIOD\"",
+      "defined_out": [
+        "\"HOLD_PERIOD\""
+      ],
+      "stack_out": [
+        "\"HOLD_PERIOD\""
+      ]
+    },
+    "81": {
+      "op": "pushint 2592000 // 2592000",
+      "defined_out": [
+        "\"HOLD_PERIOD\"",
+        "2592000"
+      ],
+      "stack_out": [
+        "\"HOLD_PERIOD\"",
+        "2592000"
+      ]
+    },
+    "86": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "87": {
+      "block": "main_after_if_else@2",
+      "stack_in": [],
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "89": {
+      "op": "bz main___algopy_default_create@14",
+      "stack_out": []
+    },
+    "92": {
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "94": {
+      "op": "!",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "95": {
+      "error": "OnCompletion must be NoOp",
+      "op": "assert // OnCompletion must be NoOp",
+      "stack_out": []
+    },
+    "96": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "98": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "99": {
+      "op": "pushbytess 0xb20fa876 0xbc7e1a49 0xbdad8ae4 0x5032e28d 0x02bece11 // method \"buy_nft(uint64)string\", method \"sell_nft(address)string\", method \"check_hold_days()uint64\", method \"get_claim_count()uint64\", method \"hello(string)string\"",
+      "defined_out": [
+        "Method(buy_nft(uint64)string)",
+        "Method(check_hold_days()uint64)",
+        "Method(get_claim_count()uint64)",
+        "Method(hello(string)string)",
+        "Method(sell_nft(address)string)"
+      ],
+      "stack_out": [
+        "Method(buy_nft(uint64)string)",
+        "Method(sell_nft(address)string)",
+        "Method(check_hold_days()uint64)",
+        "Method(get_claim_count()uint64)",
+        "Method(hello(string)string)"
+      ]
+    },
+    "126": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(buy_nft(uint64)string)",
+        "Method(check_hold_days()uint64)",
+        "Method(get_claim_count()uint64)",
+        "Method(hello(string)string)",
+        "Method(sell_nft(address)string)",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "Method(buy_nft(uint64)string)",
+        "Method(sell_nft(address)string)",
+        "Method(check_hold_days()uint64)",
+        "Method(get_claim_count()uint64)",
+        "Method(hello(string)string)",
+        "tmp%6#0"
+      ]
+    },
+    "129": {
+      "op": "match buy_nft sell_nft check_hold_days get_claim_count hello",
+      "stack_out": []
+    },
+    "141": {
+      "op": "err"
+    },
+    "142": {
+      "block": "main___algopy_default_create@14",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "144": {
+      "op": "!",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "145": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ]
+    },
+    "147": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0"
+      ]
+    },
+    "148": {
+      "op": "&&",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "149": {
+      "error": "OnCompletion must be NoOp && can only call when creating",
+      "op": "assert // OnCompletion must be NoOp && can only call when creating",
+      "stack_out": []
+    },
+    "150": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "151": {
+      "op": "return",
+      "stack_out": []
+    },
+    "152": {
+      "subroutine": "smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft[routing]",
+      "params": {},
+      "block": "buy_nft",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "153": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%0#0"
+      ]
+    },
+    "156": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "157": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "158": {
+      "op": "pushint 8 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "160": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "161": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%0#0"
+      ]
+    },
+    "162": {
+      "op": "btoi",
+      "defined_out": [
+        "amount#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "amount#0"
+      ]
+    },
+    "163": {
+      "op": "txn Sender",
+      "defined_out": [
+        "amount#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "amount#0",
+        "sender#0"
+      ]
+    },
+    "165": {
+      "op": "swap",
+      "defined_out": [
+        "amount#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "amount#0"
+      ]
+    },
+    "166": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "amount#0",
+        "0"
+      ]
+    },
+    "167": {
+      "op": "bytec 4 // \"PRICE\"",
+      "defined_out": [
+        "\"PRICE\"",
+        "0",
+        "amount#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "amount#0",
+        "0",
+        "\"PRICE\""
+      ]
+    },
+    "169": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "amount#0",
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "amount#0",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "170": {
+      "error": "check self.PRICE exists",
+      "op": "assert // check self.PRICE exists",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "amount#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "171": {
+      "op": "<",
+      "defined_out": [
+        "sender#0",
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%1#1"
+      ]
+    },
+    "172": {
+      "op": "bz buy_nft_after_if_else@3",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ]
+    },
+    "175": {
+      "op": "pushbytes \" Need to pay 0.1 ALGO to buy NFT!\"",
+      "defined_out": [
+        "sender#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0"
+      ]
+    },
+    "210": {
+      "block": "buy_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft@8",
+      "stack_in": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "tmp%2#0",
+        "tmp%2#0 (copy)"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0",
+        "tmp%2#0 (copy)"
+      ]
+    },
+    "211": {
+      "op": "len",
+      "defined_out": [
+        "aggregate%length%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0",
+        "aggregate%length%0#0"
+      ]
+    },
+    "212": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%as_bytes%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0",
+        "aggregate%as_bytes%0#0"
+      ]
+    },
+    "213": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "aggregate%length_uint16%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0",
+        "aggregate%length_uint16%0#0"
+      ]
+    },
+    "216": {
+      "op": "swap",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "aggregate%length_uint16%0#0",
+        "tmp%2#0"
+      ]
+    },
+    "217": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%encoded_value%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "aggregate%encoded_value%0#0"
+      ]
+    },
+    "218": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%encoded_value%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "aggregate%encoded_value%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "219": {
+      "op": "swap",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "0x151f7c75",
+        "aggregate%encoded_value%0#0"
+      ]
+    },
+    "220": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%4#0"
+      ]
+    },
+    "221": {
+      "op": "log",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ]
+    },
+    "222": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "1"
+      ]
+    },
+    "223": {
+      "op": "return",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ]
+    },
+    "224": {
+      "block": "buy_nft_after_if_else@3",
+      "stack_in": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ],
+      "op": "bytec_2 // \"owners\"",
+      "defined_out": [
+        "\"owners\""
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "\"owners\""
+      ]
+    },
+    "225": {
+      "op": "dig 1",
+      "defined_out": [
+        "\"owners\"",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "\"owners\"",
+        "sender#0"
+      ]
+    },
+    "227": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "228": {
+      "op": "dup",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "229": {
+      "op": "bury 3",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "231": {
+      "op": "box_get",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0",
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ]
+    },
+    "232": {
+      "error": "check self.owners entry exists",
+      "op": "assert // check self.owners entry exists",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "aggregate%box_get%0#0"
+      ]
+    },
+    "233": {
+      "op": "btoi",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "maybe_value_converted%0#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "maybe_value_converted%0#0"
+      ]
+    },
+    "234": {
+      "op": "bz buy_nft_after_if_else@5",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ]
+    },
+    "237": {
+      "op": "pushbytes \" You already own an NFT!\"",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0"
+      ]
+    },
+    "263": {
+      "op": "b buy_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft@8"
+    },
+    "266": {
+      "block": "buy_nft_after_if_else@5",
+      "stack_in": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "0"
+      ]
+    },
+    "267": {
+      "op": "bytec_0 // \"claim_count\"",
+      "defined_out": [
+        "\"claim_count\"",
+        "0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "0",
+        "\"claim_count\""
+      ]
+    },
+    "268": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "count#0",
+        "maybe_exists%1#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "count#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "269": {
+      "error": "check self.claim_count exists",
+      "op": "assert // check self.claim_count exists",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "count#0"
+      ]
+    },
+    "270": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "count#0",
+        "0"
+      ]
+    },
+    "271": {
+      "op": "bytec_3 // \"MAX_CLAIMS\"",
+      "defined_out": [
+        "\"MAX_CLAIMS\"",
+        "0",
+        "count#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "count#0",
+        "0",
+        "\"MAX_CLAIMS\""
+      ]
+    },
+    "272": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "count#0",
+        "maybe_exists%2#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "count#0",
+        "maybe_value%2#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "273": {
+      "error": "check self.MAX_CLAIMS exists",
+      "op": "assert // check self.MAX_CLAIMS exists",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "count#0",
+        "maybe_value%2#0"
+      ]
+    },
+    "274": {
+      "op": ">=",
+      "defined_out": [
+        "tmp%3#1"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%3#1"
+      ]
+    },
+    "275": {
+      "op": "bz buy_nft_after_if_else@7",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ]
+    },
+    "278": {
+      "op": "pushbytes \" All NFTs sold!\"",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0"
+      ]
+    },
+    "295": {
+      "op": "b buy_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft@8"
+    },
+    "298": {
+      "block": "buy_nft_after_if_else@7",
+      "stack_in": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ],
+      "op": "global LatestTimestamp",
+      "defined_out": [
+        "tmp%4#1"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%4#1"
+      ]
+    },
+    "300": {
+      "op": "itob",
+      "defined_out": [
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "encoded_value%0#0"
+      ]
+    },
+    "301": {
+      "op": "dig 2",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "303": {
+      "op": "swap",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "box_prefixed_key%0#0",
+        "encoded_value%0#0"
+      ]
+    },
+    "304": {
+      "op": "box_put",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ]
+    },
+    "305": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "0"
+      ]
+    },
+    "306": {
+      "op": "bytec_0 // \"claim_count\"",
+      "defined_out": [
+        "\"claim_count\"",
+        "0",
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "0",
+        "\"claim_count\""
+      ]
+    },
+    "307": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "maybe_exists%3#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "maybe_value%3#0",
+        "maybe_exists%3#0"
+      ]
+    },
+    "308": {
+      "error": "check self.claim_count exists",
+      "op": "assert // check self.claim_count exists",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "maybe_value%3#0"
+      ]
+    },
+    "309": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1",
+        "box_prefixed_key%0#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "maybe_value%3#0",
+        "1"
+      ]
+    },
+    "310": {
+      "op": "+",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%5#0"
+      ]
+    },
+    "311": {
+      "op": "bytec_0 // \"claim_count\"",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%5#0",
+        "\"claim_count\""
+      ]
+    },
+    "312": {
+      "op": "swap",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "\"claim_count\"",
+        "tmp%5#0"
+      ]
+    },
+    "313": {
+      "op": "app_global_put",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0"
+      ]
+    },
+    "314": {
+      "op": "pushbytes \" NFT purchased! You must hold it for 30 days.\"",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "sender#0",
+        "tmp%2#0"
+      ]
+    },
+    "361": {
+      "op": "b buy_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.buy_nft@8"
+    },
+    "364": {
+      "subroutine": "smart_contracts.fullstackclaimcap.contract.ClaimCap.sell_nft[routing]",
+      "params": {},
+      "block": "sell_nft",
+      "stack_in": [],
+      "op": "pushbytes \"\"",
+      "stack_out": [
+        "now#0"
+      ]
+    },
+    "366": {
+      "op": "txna ApplicationArgs 1"
+    },
+    "369": {
+      "op": "dup",
+      "defined_out": [
+        "buyer#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "buyer#0"
+      ]
+    },
+    "370": {
+      "op": "len",
+      "defined_out": [
+        "buyer#0",
+        "len%0#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "len%0#0"
+      ]
+    },
+    "371": {
+      "op": "pushint 32 // 32",
+      "defined_out": [
+        "32",
+        "buyer#0",
+        "len%0#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "len%0#0",
+        "32"
+      ]
+    },
+    "373": {
+      "op": "==",
+      "defined_out": [
+        "buyer#0",
+        "eq%0#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "eq%0#0"
+      ]
+    },
+    "374": {
+      "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "stack_out": [
+        "now#0",
+        "buyer#0"
+      ]
+    },
+    "375": {
+      "op": "bytec_2 // \"owners\"",
+      "defined_out": [
+        "\"owners\"",
+        "buyer#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "\"owners\""
+      ]
+    },
+    "376": {
+      "op": "txn Sender",
+      "defined_out": [
+        "\"owners\"",
+        "buyer#0",
+        "sender#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "\"owners\"",
+        "sender#0"
+      ]
+    },
+    "378": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "buyer#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "379": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "buyer#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "380": {
+      "op": "box_get",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0",
+        "box_prefixed_key%0#0",
+        "buyer#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ]
+    },
+    "381": {
+      "error": "check self.owners entry exists",
+      "op": "assert // check self.owners entry exists",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "aggregate%box_get%0#0"
+      ]
+    },
+    "382": {
+      "op": "btoi",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "buyer#0",
+        "purchase_time#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ]
+    },
+    "383": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "buyer#0",
+        "purchase_time#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "purchase_time#0"
+      ]
+    },
+    "384": {
+      "op": "bnz sell_nft_after_if_else@3",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ]
+    },
+    "387": {
+      "op": "pushbytes \" You don't own an NFT.\"",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "buyer#0",
+        "purchase_time#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%2#0"
+      ]
+    },
+    "411": {
+      "block": "sell_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.sell_nft@6",
+      "stack_in": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%2#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "tmp%2#0",
+        "tmp%2#0 (copy)"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%2#0",
+        "tmp%2#0 (copy)"
+      ]
+    },
+    "412": {
+      "op": "len",
+      "defined_out": [
+        "aggregate%length%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%2#0",
+        "aggregate%length%0#0"
+      ]
+    },
+    "413": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%as_bytes%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%2#0",
+        "aggregate%as_bytes%0#0"
+      ]
+    },
+    "414": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "aggregate%length_uint16%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%2#0",
+        "aggregate%length_uint16%0#0"
+      ]
+    },
+    "417": {
+      "op": "swap",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "aggregate%length_uint16%0#0",
+        "tmp%2#0"
+      ]
+    },
+    "418": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%encoded_value%0#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "aggregate%encoded_value%0#0"
+      ]
+    },
+    "419": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%encoded_value%0#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "aggregate%encoded_value%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "420": {
+      "op": "swap",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "0x151f7c75",
+        "aggregate%encoded_value%0#0"
+      ]
+    },
+    "421": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%4#0"
+      ]
+    },
+    "422": {
+      "op": "log",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ]
+    },
+    "423": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "1"
+      ]
+    },
+    "424": {
+      "op": "return",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ]
+    },
+    "425": {
+      "block": "sell_nft_after_if_else@3",
+      "stack_in": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ],
+      "op": "global LatestTimestamp"
+    },
+    "427": {
+      "op": "dup",
+      "defined_out": [
+        "now#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "now#0",
+        "now#0"
+      ]
+    },
+    "428": {
+      "op": "bury 5",
+      "defined_out": [
+        "now#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "now#0"
+      ]
+    },
+    "430": {
+      "op": "dig 1",
+      "defined_out": [
+        "now#0",
+        "purchase_time#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "now#0",
+        "purchase_time#0"
+      ]
+    },
+    "432": {
+      "op": "-",
+      "defined_out": [
+        "now#0",
+        "purchase_time#0",
+        "tmp%3#1"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%3#1"
+      ]
+    },
+    "433": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%3#1",
+        "0"
+      ]
+    },
+    "434": {
+      "op": "bytec 5 // \"HOLD_PERIOD\"",
+      "defined_out": [
+        "\"HOLD_PERIOD\"",
+        "0",
+        "now#0",
+        "purchase_time#0",
+        "tmp%3#1"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%3#1",
+        "0",
+        "\"HOLD_PERIOD\""
+      ]
+    },
+    "436": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "now#0",
+        "purchase_time#0",
+        "tmp%3#1"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%3#1",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "437": {
+      "error": "check self.HOLD_PERIOD exists",
+      "op": "assert // check self.HOLD_PERIOD exists",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%3#1",
+        "maybe_value%0#0"
+      ]
+    },
+    "438": {
+      "op": "<",
+      "defined_out": [
+        "now#0",
+        "purchase_time#0",
+        "tmp%4#1"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%4#1"
+      ]
+    },
+    "439": {
+      "op": "bz sell_nft_after_if_else@5",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ]
+    },
+    "442": {
+      "op": "pushbytes \" Hold period (30 days) not finished yet!\"",
+      "defined_out": [
+        "now#0",
+        "purchase_time#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%2#0"
+      ]
+    },
+    "484": {
+      "op": "b sell_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.sell_nft@6"
+    },
+    "487": {
+      "block": "sell_nft_after_if_else@5",
+      "stack_in": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ],
+      "op": "bytec_2 // \"owners\"",
+      "defined_out": [
+        "\"owners\""
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "\"owners\""
+      ]
+    },
+    "488": {
+      "op": "dig 3",
+      "defined_out": [
+        "\"owners\"",
+        "buyer#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "\"owners\"",
+        "buyer#0"
+      ]
+    },
+    "490": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%1#0",
+        "buyer#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "box_prefixed_key%1#0"
+      ]
+    },
+    "491": {
+      "op": "dig 4",
+      "defined_out": [
+        "box_prefixed_key%1#0",
+        "buyer#0",
+        "now#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "box_prefixed_key%1#0",
+        "now#0"
+      ]
+    },
+    "493": {
+      "op": "itob",
+      "defined_out": [
+        "box_prefixed_key%1#0",
+        "buyer#0",
+        "encoded_value%0#0",
+        "now#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "box_prefixed_key%1#0",
+        "encoded_value%0#0"
+      ]
+    },
+    "494": {
+      "op": "box_put",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ]
+    },
+    "495": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "buyer#0",
+        "now#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "0"
+      ]
+    },
+    "496": {
+      "op": "itob",
+      "defined_out": [
+        "buyer#0",
+        "encoded_value%1#0",
+        "now#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "encoded_value%1#0"
+      ]
+    },
+    "497": {
+      "op": "dig 2",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "buyer#0",
+        "encoded_value%1#0",
+        "now#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "encoded_value%1#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "499": {
+      "op": "swap",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "box_prefixed_key%0#0",
+        "encoded_value%1#0"
+      ]
+    },
+    "500": {
+      "op": "box_put",
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0"
+      ]
+    },
+    "501": {
+      "op": "pushbytes \"NFT sold successfully!\"",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "buyer#0",
+        "now#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "now#0",
+        "buyer#0",
+        "box_prefixed_key%0#0",
+        "purchase_time#0",
+        "tmp%2#0"
+      ]
+    },
+    "525": {
+      "op": "b sell_nft_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.sell_nft@6"
+    },
+    "528": {
+      "subroutine": "smart_contracts.fullstackclaimcap.contract.ClaimCap.check_hold_days[routing]",
+      "params": {},
+      "block": "check_hold_days",
+      "stack_in": [],
+      "op": "bytec_2 // \"owners\"",
+      "defined_out": [
+        "\"owners\""
+      ],
+      "stack_out": [
+        "\"owners\""
+      ]
+    },
+    "529": {
+      "op": "txn Sender",
+      "defined_out": [
+        "\"owners\"",
+        "sender#0"
+      ],
+      "stack_out": [
+        "\"owners\"",
+        "sender#0"
+      ]
+    },
+    "531": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "532": {
+      "op": "box_get",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ],
+      "stack_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ]
+    },
+    "533": {
+      "error": "check self.owners entry exists",
+      "op": "assert // check self.owners entry exists",
+      "stack_out": [
+        "aggregate%box_get%0#0"
+      ]
+    },
+    "534": {
+      "op": "btoi",
+      "defined_out": [
+        "purchase_time#0"
+      ],
+      "stack_out": [
+        "purchase_time#0"
+      ]
+    },
+    "535": {
+      "op": "dup",
+      "defined_out": [
+        "purchase_time#0"
+      ],
+      "stack_out": [
+        "purchase_time#0",
+        "purchase_time#0"
+      ]
+    },
+    "536": {
+      "op": "bnz check_hold_days_after_if_else@3",
+      "stack_out": [
+        "purchase_time#0"
+      ]
+    },
+    "539": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "purchase_time#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "purchase_time#0",
+        "tmp%0#0"
+      ]
+    },
+    "540": {
+      "block": "check_hold_days_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.check_hold_days@4",
+      "stack_in": [
+        "purchase_time#0",
+        "tmp%0#0"
+      ],
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "purchase_time#0",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "541": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "purchase_time#0",
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "542": {
+      "op": "swap",
+      "stack_out": [
+        "purchase_time#0",
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "543": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "purchase_time#0",
+        "tmp%2#0"
+      ]
+    },
+    "544": {
+      "op": "log",
+      "stack_out": [
+        "purchase_time#0"
+      ]
+    },
+    "545": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "purchase_time#0",
+        "1"
+      ]
+    },
+    "546": {
+      "op": "return",
+      "stack_out": [
+        "purchase_time#0"
+      ]
+    },
+    "547": {
+      "block": "check_hold_days_after_if_else@3",
+      "stack_in": [
+        "purchase_time#0"
+      ],
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "purchase_time#0",
+        "tmp%0#0"
+      ]
+    },
+    "548": {
+      "op": "b check_hold_days_after_inlined_smart_contracts.fullstackclaimcap.contract.ClaimCap.check_hold_days@4"
+    },
+    "551": {
+      "subroutine": "smart_contracts.fullstackclaimcap.contract.ClaimCap.get_claim_count[routing]",
+      "params": {},
+      "block": "get_claim_count",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "552": {
+      "op": "bytec_0 // \"claim_count\"",
+      "defined_out": [
+        "\"claim_count\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"claim_count\""
+      ]
+    },
+    "553": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "554": {
+      "error": "check self.claim_count exists",
+      "op": "assert // check self.claim_count exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "555": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "556": {
+      "op": "bytec_1 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "557": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "558": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "559": {
+      "op": "log",
+      "stack_out": []
+    },
+    "560": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "561": {
+      "op": "return",
+      "stack_out": []
+    },
+    "562": {
+      "subroutine": "smart_contracts.fullstackclaimcap.contract.ClaimCap.hello[routing]",
+      "params": {},
+      "block": "hello",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "565": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "566": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)",
+        "0"
+      ]
+    },
+    "567": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "568": {
+      "op": "pushint 2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "570": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0"
+      ]
+    },
+    "571": {
+      "op": "swap",
+      "stack_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ]
+    },
+    "572": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0"
+      ],
+      "stack_out": [
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "573": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0"
+      ],
+      "stack_out": [
+        "eq%0#0"
+      ]
+    },
+    "574": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": []
+    },
+    "575": {
+      "op": "pushbytes 0x151f7c75002948656c6c6f207b6e616d657d212057656c636f6d6520746f20436c61696d436170204d61726b657420",
+      "defined_out": [
+        "0x151f7c75002948656c6c6f207b6e616d657d212057656c636f6d6520746f20436c61696d436170204d61726b657420"
+      ],
+      "stack_out": [
+        "0x151f7c75002948656c6c6f207b6e616d657d212057656c636f6d6520746f20436c61696d436170204d61726b657420"
+      ]
+    },
+    "624": {
+      "op": "log",
+      "stack_out": []
+    },
+    "625": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "626": {
+      "op": "return",
+      "stack_out": []
+    }
+  }
+}
