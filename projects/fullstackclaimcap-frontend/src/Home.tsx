@@ -4,6 +4,7 @@ import ConnectWallet from "./components/ConnectWallet";
 import Transact from "./components/Transact";
 import AppCalls from "./components/AppCalls";
 import ClaimCapApp from "./components/ClaimCapApp";
+import Navbar from "./components/Navbar";
 
 interface HomeProps {}
 
@@ -26,49 +27,32 @@ const Home: React.FC<HomeProps> = () => {
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center bg-teal-400 bg-gradient" style={{ backgroundColor: "#20c997" }}>
-      <div className="container text-center">
-        <div className="mx-auto bg-white shadow-lg rounded-4 p-5" style={{ maxWidth: "480px" }}>
+    <div className="min-vh-100 d-flex align-items-center bg-teal-400 bg-gradient">
+      <Navbar onConnectWallet={toggleWalletModal} activeAddress={activeAddress} />
+
+      <div className="container text-center mt-5">
+        <div className="mx-auto bg-white shadow-lg rounded-4 p-5">
           <h1 className="display-5 fw-bold mb-3">
-            Welcome to <span className="text-primary">AlgoKit 🙂</span>
+            Welcome to <span className="text-primary">Claim Cap</span>
           </h1>
-          <p className="text-muted mb-4">
-            This starter has been generated using the official AlgoKit React template. Refer to the resource below for next steps.
-          </p>
 
-          <div className="d-grid gap-3">
-            <a
-              data-test-id="getting-started"
-              className="btn btn-primary"
-              target="_blank"
-              rel="noreferrer"
-              href="https://github.com/algorandfoundation/algokit-cli"
-            >
-              Getting Started
-            </a>
+          {/* (You can now remove the old Connect Wallet button here if you want) */}
 
-            <hr className="my-2" />
+          {activeAddress && (
+            <>
+              <button data-test-id="transactions-demo" className="btn btn-outline-success" onClick={toggleDemoModal}>
+                Transactions Demo
+              </button>
 
-            <button data-test-id="connect-wallet" className="btn btn-outline-primary" onClick={toggleWalletModal}>
-              Connect Wallet
-            </button>
+              <button data-test-id="appcalls-demo" className="btn btn-outline-info" onClick={toggleAppCallsModal}>
+                Contract Interactions Demo
+              </button>
 
-            {activeAddress && (
-              <>
-                <button data-test-id="transactions-demo" className="btn btn-outline-success" onClick={toggleDemoModal}>
-                  Transactions Demo
-                </button>
-
-                <button data-test-id="appcalls-demo" className="btn btn-outline-info" onClick={toggleAppCallsModal}>
-                  Contract Interactions Demo
-                </button>
-
-                <div className="mt-4">
-                  <ClaimCapApp appId={748997121} />
-                </div>
-              </>
-            )}
-          </div>
+              <div className="mt-4">
+                <ClaimCapApp appId={748997121} />
+              </div>
+            </>
+          )}
 
           <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
           <Transact openModal={openDemoModal} setModalState={setOpenDemoModal} />

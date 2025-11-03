@@ -1,4 +1,7 @@
 /* App.css */
+@import "tailwindcss";
+
+
 
 .hero {
   display: flex;
