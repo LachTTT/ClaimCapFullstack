@@ -13,11 +13,11 @@ const ConnectWallet = ({ openModal, closeModal }: ConnectWalletInterface) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-2 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
         openModal ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
     >
-      <div className="bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100">
+      <div className="bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100 ">
         {activeAddress ? (
           <div className="mb-4">
             <Account />

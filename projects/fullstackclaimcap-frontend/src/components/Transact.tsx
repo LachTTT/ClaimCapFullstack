@@ -52,7 +52,7 @@ const Transact = ({ openModal, setModalState }: TransactInterface) => {
   if (!openModal) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 animate-fadeIn">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 animate-fadeIn p-2">
       <div className="bg-gray-900 text-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
         <h3 className="text-xl font-semibold mb-2 text-center">💸 Send Payment Transaction</h3>
         <p className="text-gray-400 text-sm mb-6 text-center">
