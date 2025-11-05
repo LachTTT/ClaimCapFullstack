@@ -17,7 +17,7 @@ const ConnectWallet = ({ openModal, closeModal }: ConnectWalletInterface) => {
         openModal ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
     >
-      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100">
+      <div className="bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100">
         {activeAddress ? (
           <div className="mb-4">
             <Account />
@@ -36,9 +36,9 @@ const ConnectWallet = ({ openModal, closeModal }: ConnectWalletInterface) => {
                 key={wallet.id}
                 data-test-id={`${wallet.id}-connect`}
                 onClick={() => wallet.connect()}
-                className="flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-teal-700 hover:bg-teal-50 dark:hover:bg-teal-800/40 transition-all duration-200"
+                className="flex items-center justify-center gap-1 py-3 rounded-xl border border-teal-700 hover:bg-teal-800/40  transition-all duration-200"
               >
-                {!isKmd(wallet) && <img alt={`${wallet.id} icon`} src={wallet.metadata.icon} className="w-7 h-7 object-contain" />}
+                {!isKmd(wallet) && <img alt={`${wallet.id} icon`} src={wallet.metadata.icon} className="w-7 h-7 object-contain mr-1" />}
                 <span className="text-teal-800 dark:text-teal-300 font-semibold">
                   {isKmd(wallet) ? "LocalNet Wallet" : wallet.metadata.name}
                 </span>

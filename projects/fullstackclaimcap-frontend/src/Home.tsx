@@ -27,26 +27,32 @@ const Home: React.FC<HomeProps> = () => {
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center bg-teal-400 bg-gradient">
+    <div className="">
       <Navbar onConnectWallet={toggleWalletModal} activeAddress={activeAddress} />
 
-      <div className="container text-center mt-5">
-        <div className="mx-auto bg-white shadow-lg rounded-4 p-5">
-          <h1 className="display-5 fw-bold mb-3">
-            Welcome to <span className="text-primary">Claim Cap</span>
-          </h1>
+      <div className="container text-center p-2 ">
+        <div>
+          <h1 className="text-6xl p-2 font-bold">Welcome to Claim Cap</h1>
 
           {/* (You can now remove the old Connect Wallet button here if you want) */}
 
           {activeAddress && (
             <>
-              <button data-test-id="transactions-demo" className="btn btn-outline-success" onClick={toggleDemoModal}>
-                Transactions Demo
-              </button>
+              <div className="flex justify-center gap-3 p-2">
+                <button
+                  onClick={toggleDemoModal}
+                  className="border border-green-500 text-green-600 hover:bg-green-500 hover:text-white px-4 py-2 rounded-md transition"
+                >
+                  Transactions Demo
+                </button>
 
-              <button data-test-id="appcalls-demo" className="btn btn-outline-info" onClick={toggleAppCallsModal}>
-                Contract Interactions Demo
-              </button>
+                <button
+                  onClick={toggleAppCallsModal}
+                  className="border border-sky-500 text-sky-600 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-md transition"
+                >
+                  Contract Interactions Demo
+                </button>
+              </div>
 
               <div className="mt-4">
                 <ClaimCapApp appId={748997121} />

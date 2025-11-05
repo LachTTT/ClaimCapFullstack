@@ -84,23 +84,27 @@ const ClaimCapApp: React.FC<ClaimCapAppProps> = ({ appId }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow-md">
-      <h2 className="text-2xl font-bold mb-4">ClaimCap NFT Market</h2>
-      <p className="mb-2">
-        Connected wallet: <span className="font-mono">{activeAddress || "Not connected"}</span>
-      </p>
-      <p className="mb-4">Total NFTs claimed: {claimCount}</p>
+    <div className="p-4">
+      <h2 className="text-2xl p-2">ClaimCap NFT Market</h2>
 
-      <div className="flex flex-col gap-2">
-        <button className="btn btn-primary" onClick={callHello}>
+      <p className="p-2">Total NFTs claimed: {claimCount}</p>
+
+      <div className="flex gap-2 p-2 justify-center">
+        <button
+          className="border border-sky-500 text-sky-600 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-md transition"
+          onClick={callHello}
+        >
           Say Hello
         </button>
-        <button className="btn btn-secondary" onClick={getClaimCount}>
+        <button
+          className="border border-sky-500 text-sky-600 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-md transition"
+          onClick={getClaimCount}
+        >
           Refresh Claim Count
         </button>
       </div>
 
-      <p className="mt-4 text-green-600">{message}</p>
+      <p className="text-green-600">{message}</p>
     </div>
   );
 };

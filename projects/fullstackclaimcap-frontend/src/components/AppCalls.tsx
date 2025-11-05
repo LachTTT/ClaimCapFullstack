@@ -12,8 +12,8 @@ interface AppCallsInterface {
 }
 
 const AppCalls = ({ openModal, setModalState }: AppCallsInterface) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [contractInput, setContractInput] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+  const [contractInput, setContractInput] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const { transactionSigner, activeAddress } = useWallet();
 
@@ -25,73 +25,76 @@ const AppCalls = ({ openModal, setModalState }: AppCallsInterface) => {
   });
   algorand.setDefaultSigner(transactionSigner);
 
-  const sendAppCall = async () => {
-    setLoading(true);
+  const sendAppCall = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!activeAddress) {
+      enqueueSnackbar("Please connect wallet first", { variant: "warning" });
+      return;
+    }
 
-    // Please note, in typical production scenarios,
-    // you wouldn't want to use deploy directly from your frontend.
-    // Instead, you would deploy your contract on your backend and reference it by id.
-    // Given the simplicity of the starter contract, we are deploying it on the frontend
-    // for demonstration purposes.
-    const factory = new ClaimCapFactory({
-      defaultSender: activeAddress ?? undefined,
-      algorand,
-    });
-    const deployResult = await factory
-      .deploy({
-        onSchemaBreak: OnSchemaBreak.AppendApp,
-        onUpdate: OnUpdate.AppendApp,
-      })
-      .catch((e: Error) => {
-        enqueueSnackbar(`Error deploying the contract: ${e.message}`, { variant: "error" });
-        setLoading(false);
-        return undefined;
+    setLoading(true);
+    try {
+      const factory = new ClaimCapFactory({
+        defaultSender: activeAddress ?? undefined,
+        algorand,
       });
 
-    if (!deployResult) {
-      return;
-    }
+      const deployResult = await factory.deploy({
+        onSchemaBreak: OnSchemaBreak.AppendApp,
+        onUpdate: OnUpdate.AppendApp,
+      });
 
-    const { appClient } = deployResult;
+      const response = await deployResult.appClient.send.hello({
+        args: { name: contractInput },
+      });
 
-    const response = await appClient.send.hello({ args: { name: contractInput } }).catch((e: Error) => {
-      enqueueSnackbar(`Error calling the contract: ${e.message}`, { variant: "error" });
+      enqueueSnackbar(`Response: ${response.return}`, { variant: "success" });
+    } catch (e: any) {
+      enqueueSnackbar(`Error: ${e.message}`, { variant: "error" });
+    } finally {
       setLoading(false);
-      return undefined;
-    });
-
-    if (!response) {
-      return;
     }
-
-    enqueueSnackbar(`Response from the contract: ${response.return}`, { variant: "success" });
-    setLoading(false);
   };
 
+  if (!openModal) return null;
+
   return (
-    <dialog id="appcalls_modal" className={`modal ${openModal ? "modal-open" : ""} bg-slate-200`}>
-      <form method="dialog" className="modal-box">
-        <h3 className="font-bold text-lg">Say hello to your Algorand smart contract</h3>
-        <br />
-        <input
-          type="text"
-          placeholder="Provide input to hello function"
-          className="input input-bordered w-full"
-          value={contractInput}
-          onChange={(e) => {
-            setContractInput(e.target.value);
-          }}
-        />
-        <div className="modal-action ">
-          <button className="btn" onClick={() => setModalState(!openModal)}>
-            Close
-          </button>
-          <button className={`btn`} onClick={sendAppCall}>
-            {loading ? <span className="loading loading-spinner" /> : "Send application call"}
-          </button>
-        </div>
-      </form>
-    </dialog>
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 animate-fadeIn">
+      <div className="bg-gray-900 text-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
+        <h3 className="text-xl font-semibold mb-4 text-center">Say Hello to Your Smart Contract 👋</h3>
+
+        <form onSubmit={sendAppCall} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Type your name here..."
+            className="w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm"
+            value={contractInput}
+            onChange={(e) => setContractInput(e.target.value)}
+          />
+
+          <div className="flex justify-end gap-3 pt-2">
+            <button
+              type="button"
+              onClick={() => setModalState(false)}
+              className="px-4 py-2 rounded-lg border border-gray-600 hover:bg-gray-700 transition"
+              disabled={loading}
+            >
+              Close
+            </button>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className={`px-4 py-2 rounded-lg transition text-white font-medium ${
+                loading ? "bg-gray-600 cursor-not-allowed" : "bg-amber-500 hover:bg-amber-600 shadow-lg shadow-amber-500/30"
+              }`}
+            >
+              {loading ? "Sending..." : "Send Call"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
