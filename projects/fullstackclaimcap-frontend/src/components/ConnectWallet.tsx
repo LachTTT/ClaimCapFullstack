@@ -13,44 +13,86 @@ const ConnectWallet = ({ openModal, closeModal }: ConnectWalletInterface) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-2 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md transition-all duration-300 ${
         openModal ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
+      onClick={closeModal}
     >
-      <div className="bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100 ">
+      <div
+        className={`bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl w-full max-w-md p-8 border border-gray-700/50 transform transition-all duration-300 ${
+          openModal ? "scale-100 translate-y-0" : "scale-95 translate-y-4"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-linear-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-white">{activeAddress ? "Your Wallet" : "Connect Wallet"}</h3>
+          </div>
+          <button
+            onClick={closeModal}
+            className="text-gray-400 hover:text-white transition-colors duration-200 p-1 hover:bg-gray-700/50 rounded-lg"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Content */}
         {activeAddress ? (
-          <div className="mb-4">
+          <div className="mb-6">
             <Account />
           </div>
         ) : (
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-4">Connect Your Wallet</h3>
-            <p className="text-sm text-gray-500 text-center mb-6">Choose a provider to connect your Algorand wallet.</p>
+          <div className="mb-6">
+            <p className="text-sm text-gray-400 text-center">Choose a provider to connect your Algorand wallet securely.</p>
           </div>
         )}
 
+        {/* Wallet Options */}
         {!activeAddress && (
-          <div className="grid gap-3">
+          <div className="grid gap-3 mb-6">
             {wallets?.map((wallet) => (
               <button
                 key={wallet.id}
                 data-test-id={`${wallet.id}-connect`}
                 onClick={() => wallet.connect()}
-                className="flex items-center justify-center gap-1 py-3 rounded-xl border border-teal-700 hover:bg-teal-800/40  transition-all duration-200"
+                className="group relative flex items-center justify-center gap-3 py-4 px-4 rounded-xl bg-linear-to-r from-gray-800 to-gray-700 border border-gray-600/50 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 hover:scale-[1.02] overflow-hidden"
               >
-                {!isKmd(wallet) && <img alt={`${wallet.id} icon`} src={wallet.metadata.icon} className="w-7 h-7 object-contain mr-1" />}
-                <span className="text-teal-800 dark:text-teal-300 font-semibold">
-                  {isKmd(wallet) ? "LocalNet Wallet" : wallet.metadata.name}
-                </span>
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                {!isKmd(wallet) && (
+                  <img alt={`${wallet.id} icon`} src={wallet.metadata.icon} className="w-8 h-8 object-contain relative z-10" />
+                )}
+                <span className="text-white font-semibold relative z-10">{isKmd(wallet) ? "LocalNet Wallet" : wallet.metadata.name}</span>
+                <svg
+                  className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors duration-300 relative z-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </button>
             ))}
           </div>
         )}
 
-        <div className="mt-6 flex flex-col gap-3">
+        {/* Action Buttons */}
+        <div className="flex flex-col gap-3">
           {activeAddress && (
             <button
-              className="w-full py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold transition-all duration-200"
+              className="w-full py-3 rounded-xl bg-linear-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:scale-[1.02]"
               data-test-id="logout"
               onClick={async () => {
                 if (wallets) {
@@ -58,28 +100,34 @@ const ConnectWallet = ({ openModal, closeModal }: ConnectWalletInterface) => {
                   if (activeWallet) {
                     await activeWallet.disconnect();
                   } else {
-                    localStorage.removeItem("@txnlab/use-wallet:v3");
                     window.location.reload();
                   }
                 }
               }}
             >
-              Logout
+              <span className="flex items-center justify-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                  />
+                </svg>
+                Disconnect
+              </span>
             </button>
           )}
 
-          <button
-            data-test-id="close-wallet-modal"
-            onClick={closeModal}
-            className="w-full py-2.5 px-4 rounded-xl border border-gray-300
-             bg-white text-gray-700 font-semibold
-             hover:bg-gray-100 hover:border-gray-400
-             dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700
-             dark:hover:bg-gray-800 dark:hover:border-gray-600
-             transition-all duration-200 shadow-sm"
-          >
-            Close
-          </button>
+          {!activeAddress && (
+            <button
+              data-test-id="close-wallet-modal"
+              onClick={closeModal}
+              className="w-full py-3 px-4 rounded-xl border border-gray-600 bg-gray-800/50 text-gray-300 font-semibold hover:bg-gray-700/50 hover:border-gray-500 hover:text-white transition-all duration-300"
+            >
+              Cancel
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -68,7 +68,7 @@ const AppCalls = ({ openModal, setModalState }: AppCallsInterface) => {
             type="text"
             placeholder="Type your name here..."
             className="w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm"
-            value={contractInput}
+            value={contractInput} 
             onChange={(e) => setContractInput(e.target.value)}
           />
 
